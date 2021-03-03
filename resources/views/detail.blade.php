@@ -26,24 +26,22 @@
     
 
     <div class="container">
-    <div class="row justify-content-center">
-      <h2></h2>
-        <div class="col-md-12 ">
-          <div class="detail-box d-flex ">
-            <div class="recipe-image d-inline-flex ">
-              <img src="{{ asset('storage/image/' . $post->image_path) }}" width="65%" heigth="100%" alt="">
+     <div class="row justify-content-center pt-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row d-flex-row">
+            <div class="left-box col-6">
+              <img src="{{ asset('storage/image/' . $post->image_path) }}" width="100%" heigth="100%" alt="">
             </div>
-            <div class="comment-box d-inline-flex" width="35%">
-              <div class="recipe_name">{{ $post->recipe_name }}</div>
+            <div class="right-box col-6">
+              <div class="recipe-name"><h2>{{ $post->recipe_name }}</h2></div>
               <div class="comment">{{ $post->comment }}</div>
 
             </div>
-
-
           </div>
+        </div>
+      </div>
 
-
-         
             <!-- <div class="card">
                 <table class="table">
                   <thead>
@@ -71,6 +69,6 @@
                       </tbody>
                 </table>
             </div> -->
-        </div>
+        
     </div>
 </div>
