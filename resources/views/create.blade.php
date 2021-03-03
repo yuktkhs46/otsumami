@@ -1,4 +1,5 @@
-
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -69,3 +70,4 @@
             </div>
         </div>
     </div>
+    @endsection

@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -25,19 +27,25 @@
     </head>
     
 
-    <div class="container">
+    <div class="container bg-beige">
      <div class="row justify-content-center pt-5">
       <div class="card">
         <div class="card-body">
           <div class="row d-flex-row">
             <div class="left-box col-6">
               <img src="{{ asset('storage/image/' . $post->image_path) }}" width="100%" heigth="100%" alt="">
+              <p>タグ</p>
             </div>
             <div class="right-box col-6">
               <div class="recipe-name"><h2>{{ $post->recipe_name }}</h2></div>
               <div class="comment">{{ $post->comment }}</div>
-
             </div>
+          </div>
+          <div class="row d-flex-row">
+            <a href="/home">レシピ一覧に戻る</a>
+            <a href="/recipe/edit/{{ $post->id }}">編集</a>
+            <a href="{{ action('App\Http\Controllers\RecipeController@delete', ['id' => $post->id ]) }}">削除</a> 
+            
           </div>
         </div>
       </div>
@@ -72,3 +80,4 @@
         
     </div>
 </div>
+@endsection
