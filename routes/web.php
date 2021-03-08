@@ -38,4 +38,21 @@ Route::post('recipe/edit/', 'App\Http\Controllers\RecipeController@update');
 // レシピを削除
 Route::get('recipe/delete/{id}', 'App\Http\Controllers\RecipeController@delete');
 
-// Route::get('news/create', 'App\Http\Controllers\Admin\NewsController@add')->middleware('auth');
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('recipe/index', 'Admin\AdminController@index');
+    Route::get('recipe/delete/{id}', 'Admin\AdminController@delete');
+    Route::get('recipe/index', 'Admin\AdminController@index');
+    //
+    Route::get('user/index', 'Admin\AdminController@index');
+    Route::get('user/delete', 'Admin\AdminController@delete');
+    //
+    Route::get('tag/index', 'Admin\AdminController@index');
+    Route::post('tag/create', 'Admin\AdminController@create');
+    Route::get('tag/edit', 'Admin\AdminController@edit');
+    Route::post('tag/create', 'Admin\AdminController@update');
+});
+
+
+
+
