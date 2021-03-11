@@ -40,17 +40,18 @@ Route::get('recipe/delete/{id}', 'App\Http\Controllers\RecipeController@delete')
 
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('recipe/index', 'Admin\AdminController@index');
-    Route::get('recipe/delete/{id}', 'Admin\AdminController@delete');
-    Route::get('recipe/index', 'Admin\AdminController@index');
+    Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+
+    Route::get('recipe/index', 'App\Http\Controllers\Admin\RecipeController@index');
+    Route::get('recipe/delete/{id}', 'App\Http\Controllers\Admin\RecipeController@delete');
     //
-    Route::get('user/index', 'Admin\AdminController@index');
-    Route::get('user/delete', 'Admin\AdminController@delete');
+    Route::get('user/index', 'App\Http\Controllers\Admin\UserController@index');
+    Route::get('user/delete', 'App\Http\Controllers\Admin\UserController@delete');
     //
-    Route::get('tag/index', 'Admin\AdminController@index');
-    Route::post('tag/create', 'Admin\AdminController@create');
-    Route::get('tag/edit', 'Admin\AdminController@edit');
-    Route::post('tag/create', 'Admin\AdminController@update');
+    Route::get('tag/index', 'App\Http\Controllers\Admin\TagController@index');
+    Route::post('tag/create', 'App\Http\Controllers\Admin\TagController@create');
+    Route::get('tag/edit', 'App\Http\Controllers\Admin\TagController@edit');
+    Route::post('tag/create', 'App\Http\Controllers\Admin\TagController@update');
 });
 
 

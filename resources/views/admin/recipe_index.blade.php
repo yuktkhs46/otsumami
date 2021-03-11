@@ -1,7 +1,8 @@
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>ニュース一覧</h2>
+            <h2>投稿済みレシピ一覧</h2>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -11,9 +12,7 @@
                 <form action="" method="get">
                     <div class="form-group row">
                         <label class="col-md-2">タイトル</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" name="cond_title" value={{ $cond_title }}>
-                        </div>
+                        
                         <div class="col-md-2">
                             {{ csrf_field() }}
                             <input type="submit" class="btn btn-primary" value="検索">
@@ -35,21 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- @foreach($posts as $news)
-                                <tr>
-                                    <th></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div>
-                                            <a href="{{ action('App\Http\Controllers\Admin\NewsController@edit', ['id' => $news->id]) }}">編集</a>
-                                        </div>
-                                        <div>
-                                            <a href="{{ action('App\Http\Controllers\Admin\NewsController@delete', ['id' => $news->id]) }}">削除</a>
-                                        </div> -->
-                                    <!-- </td>
-                                </tr> -->
-                            <!-- @endforeach -->
+                            
                         </tbody>
                     </table>
                 </div>
