@@ -27,14 +27,24 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th width="10%">ID</th>
-                                <th width="20%">タイトル</th>
-                                <th width="50%">本文</th>
-                                <th width="10%">操作</th>
+                                <th width="5%">ID</th>
+                                <th width="25%">レシピ名</th>
+                                <th width="10%">お酒</th>
+                                <th width="50%">コメント</th>
+                                <th width="10%">削除</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($recipes as $recipe)
+                            <tr>
+                            <td>{{ $recipe->id }}</td>
+                            <td>{{ $recipe->recipe_name}}</td>
+                            <td>ハイボール</td>
+                            <td>{{ $recipe->comment }}</td>
+                            <td><a href="">×</a></td>   
+                            </tr>
                             
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

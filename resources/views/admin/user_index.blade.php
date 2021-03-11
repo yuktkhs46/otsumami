@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>登録済みユーザー一覧</h2>
+            <h2>投稿済みレシピ一覧</h2>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -27,14 +27,24 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th width="10%">ID</th>
-                                <th width="20%">タイトル</th>
-                                <th width="50%">本文</th>
-                                <th width="10%">操作</th>
+                                <th width="5%">ID</th>
+                                <th width="25%">名前</th>
+                                <th width="10%">email</th>
+                                <th width="50%">password</th>
+                                <th width="10%">削除</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($users as $user)
+                            <tr>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name}}</td>
+                            <td>{{ $user->email}}</td>
+                            <td>{{ $user->password }}</td>
+                            <td><a href="">×</a></td>   
+                            </tr>
                             
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
