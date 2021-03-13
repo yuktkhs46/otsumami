@@ -41,7 +41,7 @@
                             <td>{{ $tag->id }}</td>
                             <td>{{ $tag->tag_name}}</td>
                             <td>
-                                <a href="/tag/edit/{{ $tag->id }}">編集</a>
+                                <a href="/admin/tag/edit/{{ $tag->id }}">編集</a>
                                 <a href="{{ action('App\Http\Controllers\Admin\TagController@delete', ['id' => $tag->id ]) }}">削除</a> 
                             </td>
                         </tr>

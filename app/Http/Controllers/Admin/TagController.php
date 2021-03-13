@@ -26,4 +26,29 @@ class TagController extends Controller
         return redirect('admin/tag/create');
 
     }
+
+    public function edit($id){
+        $tag = Tag::find($id);
+        
+        return view('admin.tag_edit', ['tag' => $tag]);
+    }
+
+    public function update(Request $request){
+        // dd($request);
+        $tag = Tag::find($request->id);
+        $tag_form = $request->all();
+
+        unset($tag_form['_token']);
+
+        $tag->fill($tag_form)->save();
+        return redirect('admin/tag/create');
+
+    }
+
+    public function delete(Request $request){
+        $tag  = Tag::find($request->id);
+        $tag->delete();
+        return redirect('admin/tag/create');
+
+    }
 }

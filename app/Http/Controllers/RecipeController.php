@@ -67,7 +67,6 @@ class RecipeController extends Controller
     // レシピを更新する
     public function update(Request $request){
         
-        
         $recipe = Recipe::find($request->id);
         
         $recipe_form = $request->all();
@@ -95,7 +94,7 @@ class RecipeController extends Controller
     // レシピ削除
     public function delete(Request $request){
         
-        
+
         $recipe = Recipe::find($request->id);
         
         $recipe->delete();
