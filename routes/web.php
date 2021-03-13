@@ -48,10 +48,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('user/index', 'App\Http\Controllers\Admin\UserController@index');
     Route::get('user/delete', 'App\Http\Controllers\Admin\UserController@delete');
     //
-    Route::get('tag/index', 'App\Http\Controllers\Admin\TagController@index');
+    Route::get('tag/create', 'App\Http\Controllers\Admin\TagController@add');
     Route::post('tag/create', 'App\Http\Controllers\Admin\TagController@create');
     Route::get('tag/edit', 'App\Http\Controllers\Admin\TagController@edit');
-    Route::post('tag/create', 'App\Http\Controllers\Admin\TagController@update');
+    Route::post('tag/edit', 'App\Http\Controllers\Admin\TagController@update');
 });
 
 
