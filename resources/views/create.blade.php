@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">ジャンル</label>
+                        <label class="col-md-2" for="tags">お酒</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="tag_name" value="">
                         </div>

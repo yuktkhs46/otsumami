@@ -16,6 +16,12 @@ class Tag extends Model
         'tag_name' => 'required',
         
     );
+
+    public function resipes(){
+        return $this->belongsToMany('App\Models\Recipe');
+    }
+
+    
 }
 
 

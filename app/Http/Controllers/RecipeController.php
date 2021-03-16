@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Recipe;
+use App\Models\Tag;
+
 
 class RecipeController extends Controller
 {
@@ -37,11 +41,27 @@ class RecipeController extends Controller
             $recipe->image_path = null;
         }
         
+        
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tag_name, $match);
+        
+        $tags = [];
+        foreach ($match[1] as $tag) {
+            $record = Tag::firstOrCreate(['tag_name' => $tag]);
+            array_push($tags, $record);
+        };
+
+        //投稿に紐付けされるタグのIDを配列化
+        $tags_id = [];
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag['id']);
+        };
+        
         unset($form['_token']);
         unset($form['image']);
 
         $recipe->fill($form)->save();
-        // dd($recipe);
+        
+        $recipe->tags()->attach($tags_id); // 投稿にタグつけするためにattachメソッドを使う
         return redirect('/home');
     }
 

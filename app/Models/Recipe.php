@@ -15,4 +15,8 @@ class Recipe extends Model
         'recipe_name' => 'required',
         'comment' => 'required',
     );
+
+    public function tags(){
+        return $this->belongsToMany('App\Models\Tag');
+    }
 }

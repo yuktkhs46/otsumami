@@ -14,7 +14,7 @@ class CreateRecipesTable extends Migration
     public function up()
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('recipe_name');//料理名カラム
             $table->string('comment');//コメントを保存するカラム
             $table->string('image_path');//画像のパスを保存するカラム
