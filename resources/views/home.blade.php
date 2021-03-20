@@ -14,7 +14,7 @@
           <img src="{{ asset('storage/image/' . $recipe->image_path) }}" width="100%" heigth="80%" alt="">
             <div class="card-body">
               <h4 class="card-text">{{ $recipe->recipe_name }}</h4>
-              <p class="tags">#@foreach ( $recipe->tags as $tag ) {{ $tag->tag_name }} @endforeach </p>
+              <p class="tags">@foreach ( $recipe->tags as $tag ) {{ "#".$tag->tag_name }} @endforeach </p>
               <div class="d-flex justify-content-between align-items-center " >
               
               

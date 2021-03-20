@@ -34,7 +34,15 @@
           <div class="row d-flex-row">
             <div class="left-box col-6">
               <img src="{{ asset('storage/image/' . $post->image_path) }}" width="100%" heigth="100%" alt="">
-              <p>タグ</p>
+              <div class="d-flex">
+                <div class="tag-group d-inline-flex">
+                  @foreach ($post->tags as $tag)
+                  <p>{{ "#".$tag->tag_name }}</p>
+                  @endforeach
+                </div>
+              </div>
+              
+              
             </div>
             <div class="right-box col-6">
               <div class="recipe-name"><h2>{{ $post->recipe_name }}</h2></div>

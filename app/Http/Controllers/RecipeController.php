@@ -42,7 +42,7 @@ class RecipeController extends Controller
             $recipe->image_path = null;
         }
         
-        
+        // タグ機能の実装
         preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tag_name, $match);
      
         $tags = [];
@@ -61,7 +61,8 @@ class RecipeController extends Controller
         unset($form['image']);
 
         $recipe->fill($form)->save();
-        $recipe->tags()->attach($tags_id); // 投稿にタグつけするためにattachメソッドを使う
+        // 投稿にタグつけするためにattachメソッドを使う
+        $recipe->tags()->sync($tags_id); 
         
         return redirect('/home');
     }
@@ -69,11 +70,12 @@ class RecipeController extends Controller
     // ブログ詳細画面を表示する
     public function showDetail($id){
         $post = Recipe::find($id);
+        $tags = Tag::all();
 
         if (empty($post)) {
             abort(404);    
           }
-        return view('detail', ['post' => $post]);
+        return view('detail', ['post' => $post, 'tags' => $tags]);
 
     }
 
@@ -81,8 +83,9 @@ class RecipeController extends Controller
     public function edit($id){
         
         $post = Recipe::find($id);
+        $tags = Tag::all();
         
-        return view('edit', ['post' => $post]);
+        return view('edit', ['post' => $post, 'tags' => $tags]);
     }
 
     // レシピを更新する
@@ -101,11 +104,27 @@ class RecipeController extends Controller
             $recipe_form['image_path'] = $recipe->image_path;
         }
 
+        // タグ機能の実装
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tag_name, $match);
+     
+        $tags = [];
+        foreach ($match[1] as $tag) {
+            $record = Tag::firstOrCreate(['tag_name' => $tag]);
+            array_push($tags, $record);
+        };
+
+        //投稿に紐付けされるタグのIDを配列化
+        $tags_id = [];
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag['id']);
+        };
+
         unset($recipe_form['_token']);
         unset($recipe_form['remove']);
         unset($recipe_form['image']);
 
         $recipe->fill($recipe_form)->save();
+        $recipe->tags()->sync($tags_id); // 投稿にタグつけするためにattachメソッドを使う
 
         return redirect('/home');
 

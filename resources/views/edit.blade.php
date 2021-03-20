@@ -50,7 +50,9 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="title">ジャンル</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="tag_name" value="{{ $post->tag_name }}">
+                            
+                            <input type="text" class="form-control" name="tag_name" value="@foreach ($post->tags as $tag) {{'#'.$tag->tag_name}} @endforeach ">
+                            
                         </div>
                     </div>
                     <div class="form-group row">
