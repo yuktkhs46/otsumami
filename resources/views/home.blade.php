@@ -11,15 +11,18 @@
         
         <div class="col-md-4 d-flex">
           <div class="card mb-4 shadow-sm d-inline-flex">
-          <img src="{{ asset('storage/image/' . $recipe->image_path) }}" width="100%" heigth="100%" alt="">
+          <img src="{{ asset('storage/image/' . $recipe->image_path) }}" width="100%" heigth="80%" alt="">
             <div class="card-body">
-              <p class="card-text">{{ $recipe->recipe_name }}</p>
+              <h4 class="card-text">{{ $recipe->recipe_name }}</h4>
+              <p class="tags">#@foreach ( $recipe->tags as $tag ) {{ $tag->tag_name }} @endforeach </p>
               <div class="d-flex justify-content-between align-items-center " >
+              
+              
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/recipe/{{ $recipe->id }}">view</a></button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/recipe/{{ $recipe->id }}">もっと見る</a></button>
                   <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                 </div>
-                <small class="text-muted">投稿時間</small>
+                <small class="text-muted">{{ $recipe->created_at }}</small>
               </div>
             </div>
           </div>

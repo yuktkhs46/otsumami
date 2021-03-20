@@ -18,9 +18,10 @@ class RecipeController extends Controller
 
     public function index(Request $request){
         $posts = Recipe::all();
+        $tags = Tag::all();
         // dd($posts); 
-        // xecho phpinfo();
-        return view('home', ['posts' => $posts]);
+        // echo phpinfo();
+        return view('home', ['posts' => $posts, 'tags' => $tags] );
     }
 
     public function add(){
@@ -43,7 +44,7 @@ class RecipeController extends Controller
         
         
         preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tag_name, $match);
-        
+     
         $tags = [];
         foreach ($match[1] as $tag) {
             $record = Tag::firstOrCreate(['tag_name' => $tag]);
@@ -60,8 +61,8 @@ class RecipeController extends Controller
         unset($form['image']);
 
         $recipe->fill($form)->save();
-        
         $recipe->tags()->attach($tags_id); // 投稿にタグつけするためにattachメソッドを使う
+        
         return redirect('/home');
     }
 
