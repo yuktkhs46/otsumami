@@ -18,7 +18,10 @@ class CreateRecipesTable extends Migration
             $table->string('recipe_name');//料理名カラム
             $table->string('comment');//コメントを保存するカラム
             $table->string('image_path');//画像のパスを保存するカラム
+            $table->unsignedBigInteger('user_id');//ユーザー情報を保存するカラム
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

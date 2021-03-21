@@ -22,7 +22,11 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/recipe/{{ $recipe->id }}">もっと見る</a></button>
                   <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                 </div>
-                <small class="text-muted">{{ $recipe->created_at }}</small>
+                <div class="d-flex flex-column">
+                  <small class="text-muted">{{ $recipe->user->name }}</small>
+                  <small class="text-muted">{{ $recipe->created_at }}</small>
+                </div>
+                
               </div>
             </div>
           </div>

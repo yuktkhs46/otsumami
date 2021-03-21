@@ -51,41 +51,14 @@
           </div>
           <div class="row d-flex-row">
             <a href="/home">レシピ一覧に戻る</a>
+            
+            @can ('update', $post)
             <a href="/recipe/edit/{{ $post->id }}">編集</a>
             <a href="{{ action('App\Http\Controllers\RecipeController@delete', ['id' => $post->id ]) }}">削除</a> 
-            
+            @endcan
           </div>
         </div>
       </div>
-
-            <!-- <div class="card">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col" width="20%">レシピ名</th>
-                      <th scope="col" width="15%">お酒のジャンル</th>
-                      <th scope="col" width="40%">コメント</th>
-                      <th scope="col" width="15%">画像</th>
-                      <th scope="col" width="15%">編集</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">{{ $post->recipe_name }}</th>
-                      <td>お酒</td>
-                      <td>{{ \Str::limit($post->comment, 200 )}}</td>
-                      <td>
-                        <img src="{{ asset('storage/image/' . $post->image_path) }}" width="100%" heigth="100%" alt="">
-                      </td>
-                      <td>
-                      <a href="/recipe/edit/{{ $post->id }}">編集</a>
-                      <a href="{{ action('App\Http\Controllers\RecipeController@delete', ['id' => $post->id ]) }}">削除</a> 
-                      </td>
-                    </tr>
-                      </tbody>
-                </table>
-            </div> -->
-        
     </div>
 </div>
 @endsection

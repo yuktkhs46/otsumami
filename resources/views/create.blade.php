@@ -46,9 +46,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="tags">お酒</label>
+                        <label class="col-md-2" for="tags">タグ</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="tag_name" value="">
+                            <input type="text" class="form-control" name="tag_name" value="" placeholder="#ハッシュタグを追加してみよう！">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -64,6 +64,7 @@
                         </div>
                     </div>
                     {{ csrf_field() }}
+                    
                     <input type="submit" class="btn btn-primary" value="登録">
                 
                 </form>

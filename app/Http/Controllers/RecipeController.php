@@ -7,13 +7,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Recipe;
 use App\Models\Tag;
+use App\Models\User;
 
 
 class RecipeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->only(['create', 'edit', 'update', 'delete', 'add', 'showDetail']);
+        $this->middleware('can:update,recipe')->only(['edit', 'update']);
+        $this->middleware('verified')->only('create');
     }
 
     public function index(Request $request){
@@ -32,8 +35,9 @@ class RecipeController extends Controller
     public function create(Request $request){
         $recipe = new Recipe;
         $form = $request->all();
-        // dd($form);
+        // dd($request->user()->id);
         
+
         //画像が送信されたら保存して $recipe->image_pathカラム にパスを保存する
         if (isset($form['image'])) {//変数に値が入っているかをチェック
             $path = $request->file('image')->store('image');// 画像をstorage/app/public/images配下に保存
@@ -59,6 +63,7 @@ class RecipeController extends Controller
         
         unset($form['_token']);
         unset($form['image']);
+
 
         $recipe->fill($form)->save();
         // 投稿にタグつけするためにattachメソッドを使う

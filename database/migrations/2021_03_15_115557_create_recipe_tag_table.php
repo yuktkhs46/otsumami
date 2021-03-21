@@ -19,8 +19,9 @@ class CreateRecipeTagTable extends Migration
             $table->unsignedInteger('tag_id');
             $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade'); //この行を追加
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade'); //この行を追加
-            
             $table->timestamps();
+
+            
         });
     }
 
