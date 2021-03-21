@@ -11,7 +11,7 @@
         
         <div class="col-md-4 d-flex">
           <div class="card mb-4 shadow-sm d-inline-flex">
-          <img src="{{ asset('storage/image/' . $recipe->image_path) }}" width="100%" heigth="80%" alt="">
+          <img src="{{ $recipe->image_path }}" width="100%" heigth="80%" alt="">
             <div class="card-body">
               <h4 class="card-text">{{ $recipe->recipe_name }}</h4>
               <p class="tags">@foreach ( $recipe->tags as $tag ) {{ "#".$tag->tag_name }} @endforeach </p>

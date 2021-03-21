@@ -33,7 +33,7 @@
         <div class="card-body">
           <div class="row d-flex-row">
             <div class="left-box col-6">
-              <img src="{{ asset('storage/image/' . $post->image_path) }}" width="100%" heigth="100%" alt="">
+              <img src="{{ '$post->image_path }}" width="100%" heigth="100%" alt="">
               <div class="d-flex">
                 <div class="tag-group d-inline-flex">
                   @foreach ($post->tags as $tag)

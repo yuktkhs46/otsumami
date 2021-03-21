@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Recipe;
 use App\Models\Tag;
 use App\Models\User;
+use Storage; 
 
 
 class RecipeController extends Controller
@@ -40,8 +41,8 @@ class RecipeController extends Controller
 
         //画像が送信されたら保存して $recipe->image_pathカラム にパスを保存する
         if (isset($form['image'])) {//変数に値が入っているかをチェック
-            $path = $request->file('image')->store('image');// 画像をstorage/app/public/images配下に保存
-            $recipe->image_path = basename($path);//パスからを取得したファイル名をimage_pathカラムに保存
+            $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+            $recipe->image_path = Storage::disk('s3')->url($path);
         } else {
             $recipe->image_path = null;
         }
@@ -103,8 +104,8 @@ class RecipeController extends Controller
         if ($request->remove == 'true') {
             $recipe_form['image_path'] = null;
         } elseif($request->file('image')) {
-            $path = $request->file('image')->store('image');
-            $recipe_form['image_path'] = basename($path);
+            $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+            $recipe_form['image_path'] = Storage::disk('s3')->url($path);
         } else {
             $recipe_form['image_path'] = $recipe->image_path;
         }
