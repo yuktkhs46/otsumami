@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="row d-flex-row">
-            <a href="/home">レシピ一覧に戻る</a>
+            <a href="/">レシピ一覧に戻る</a>
             
             @can ('update', $post)
             <a href="/recipe/edit/{{ $post->id }}">編集</a>

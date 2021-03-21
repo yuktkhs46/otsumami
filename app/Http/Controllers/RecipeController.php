@@ -14,8 +14,8 @@ class RecipeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['create', 'edit', 'update', 'delete', 'add', 'showDetail']);
-        $this->middleware('can:update,recipe')->only(['edit', 'update']);
+        $this->middleware('auth')->only(['create', 'edit', 'update', 'delete', 'add']);
+     
         $this->middleware('verified')->only('create');
     }
 

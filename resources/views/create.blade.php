@@ -30,7 +30,7 @@
 <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2 class="text-center">レシピ登録</h2>
+                <h2 class="text-center">新規投稿</h2>
                 <form action="{{ action('App\Http\Controllers\RecipeController@create') }}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
                         <ul>
@@ -40,7 +40,7 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">レシピ名</label>
+                        <label class="col-md-2" for="title">タイトル</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="recipe_name" value="">
                         </div>
