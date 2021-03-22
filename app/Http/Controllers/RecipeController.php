@@ -77,6 +77,7 @@ class RecipeController extends Controller
     public function showDetail($id){
         $post = Recipe::find($id);
         $tags = Tag::all();
+        
 
         if (empty($post)) {
             abort(404);    

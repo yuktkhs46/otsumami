@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RecipeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +34,7 @@ Route::get('recipe/edit/{id}', 'App\Http\Controllers\RecipeController@edit');
 Route::post('recipe/edit/', 'App\Http\Controllers\RecipeController@update');
 
 // レシピを削除
-Route::get('recipe/delete/{id}', 'App\Http\Controllers\RecipeController@delete');
+Route::get('recipe/delete/{id}', 'App\Http\Controllers\RecipeController@delete')->name('delete');
 
 
 // 管理者機能処理
