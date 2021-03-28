@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="album py-5 bg-light">
+<div class="album py-5 ">
     <div class="container">
     
 
@@ -14,13 +14,13 @@
           <img src="{{ $recipe->image_path }}" width="100%" heigth="80%" alt="">
             <div class="card-body">
               <h4 class="card-text">{{ $recipe->recipe_name }}</h4>
-              <p class="tags">@foreach ( $recipe->tags as $tag ) {{ "#".$tag->tag_name }} @endforeach </p>
+              <p class="tags ">@foreach ( $recipe->tags as $tag ) {{ "#".$tag->tag_name }} @endforeach </p>
               <div class="d-flex justify-content-between align-items-center " >
               
               
-                <div class="btn-group">
+                <div class="btn-group ">
                   <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/recipe/{{ $recipe->id }}">もっと見る</a></button>
-                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+
                 </div>
                 <div class="d-flex flex-column">
                   <small class="text-muted">{{ $recipe->user->name }}</small>

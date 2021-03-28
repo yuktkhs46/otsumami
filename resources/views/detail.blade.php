@@ -22,11 +22,17 @@
               </div>
             </div>
             <div class="row d-flex-row">
-              <a href="/">レシピ一覧に戻る</a>
-              @can ("update", $post)
-              <a href="/recipe/edit/{{ $post->id }}">編集</a>
-              <a href="{{ route('delete', ['id' => $post->id ]) }}">削除</a> 
-              @endcan
+                <div class="btn-group mx-auto">
+                  <button type="button" class="btn-flat-border btn-block "><a href="/">レシピ一覧に戻る</a></button>
+                </div>
+                <div class=" pull-left">
+                  @can ("update", $post)
+                  <button type="button" class="btn-flat-border btn-sm "><a href="/recipe/edit/{{ $post->id }}">編集</a></button>
+                  <button type="button" class="btn-flat-border btn-sm "><a href="route('delete', ['id' => $post->id ]) }}">削除</a></button>
+                  @endcan
+                </div>
+                  
+                
             </div>
           </div>
         </div>

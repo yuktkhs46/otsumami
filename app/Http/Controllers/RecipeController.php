@@ -34,6 +34,7 @@ class RecipeController extends Controller
     }
 
     public function create(Request $request){
+        
         $recipe = new Recipe;
         $form = $request->all();
         // dd($request->user()->id);
