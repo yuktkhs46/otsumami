@@ -27,8 +27,8 @@
                 </div>
                 <div class=" pull-left">
                   @can ("update", $post)
-                  <button type="button" class="btn-flat-border btn-sm "><a href="/recipe/edit/{{ $post->id }}">編集</a></button>
-                  <button type="button" class="btn-flat-border btn-sm "><a href="route('delete', ['id' => $post->id ]) }}">削除</a></button>
+                  <button type="button" class="btn-flat-border btn-sm "><a href="{{ route('recipe.edit', $post->id )  }}">編集</a></button>
+                  <button type="button" method="delete"  class="btn-flat-border btn-sm "><a href="{{ route('recipe.destroy', $post->id )}}">削除</a></button>
                   @endcan
                 </div>
                   

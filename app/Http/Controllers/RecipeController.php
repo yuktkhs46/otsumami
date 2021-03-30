@@ -15,7 +15,7 @@ class RecipeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['create', 'edit', 'update', 'delete', 'add']);
+        $this->middleware('auth')->only(['create', 'edit', 'update', 'destroy', 'add']);
      
         $this->middleware('verified')->only('create');
     }
@@ -75,7 +75,7 @@ class RecipeController extends Controller
     }
 
     // ブログ詳細画面を表示する
-    public function showDetail($id){
+    public function show($id){
         $post = Recipe::find($id);
         $tags = Tag::all();
         
@@ -140,11 +140,9 @@ class RecipeController extends Controller
     }
 
     // レシピ削除
-    public function delete(Request $request){
-        
-
+    public function destroy($id){
+        dd($id);
         $recipe = Recipe::find($request->id);
-        
         $recipe->delete();
         return redirect('/home');
     }

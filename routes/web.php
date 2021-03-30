@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecipeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,6 @@ use App\Http\Controllers\RecipeController;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\RecipeController@index');
 
 Auth::routes();
 
@@ -21,20 +20,17 @@ Route::get('/home', [App\Http\Controllers\RecipeController::class, 'index'])->na
 //レシピ一覧画面を表示
 Route::get('/home', 'App\Http\Controllers\RecipeController@index');
 
-
-//レシピ投稿
-Route::get('recipe/create', 'App\Http\Controllers\RecipeController@add');
-Route::post('recipe/create', 'App\Http\Controllers\RecipeController@create');
+route::resource('recipe', App\Http\Controllers\RecipeController::class);
 
 //レシピ詳細画面を表示
-Route::get('recipe/{id}', 'App\Http\Controllers\RecipeController@showDetail');
+// Route::get('recipe/{id}', 'App\Http\Controllers\RecipeController@showDetail');
 
 // レシピ編集画面を表示
-Route::get('recipe/edit/{id}', 'App\Http\Controllers\RecipeController@edit');
+// Route::get('recipe/edit/{id}', 'App\Http\Controllers\RecipeController@edit');
 Route::post('recipe/edit/', 'App\Http\Controllers\RecipeController@update');
 
 // レシピを削除
-Route::get('recipe/delete/{id}', 'App\Http\Controllers\RecipeController@delete')->name('delete');
+// Route::get('recipe/delete/{id}', 'App\Http\Controllers\RecipeController@delete');
 
 
 // 管理者機能処理
