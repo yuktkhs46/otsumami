@@ -71,7 +71,7 @@ class RecipeController extends Controller
         // 投稿にタグつけするためにattachメソッドを使う
         $recipe->tags()->sync($tags_id); 
         
-        return redirect('/home');
+        return redirect('/');
     }
 
     // ブログ詳細画面を表示する
@@ -98,6 +98,7 @@ class RecipeController extends Controller
 
     // レシピを更新する
     public function update(Request $request){
+       
         
         $recipe = Recipe::find($request->id);
         
@@ -134,17 +135,15 @@ class RecipeController extends Controller
         $recipe->fill($recipe_form)->save();
         $recipe->tags()->sync($tags_id); // 投稿にタグつけするためにattachメソッドを使う
 
-        return redirect('/home');
-
-
+        return redirect('/');
     }
 
     // レシピ削除
     public function destroy($id){
-        dd($id);
+        
         $recipe = Recipe::find($request->id);
         $recipe->delete();
-        return redirect('/home');
+        return redirect('/');
     }
 
-}
+};

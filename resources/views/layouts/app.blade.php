@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm sticky-top ">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'ぐるめーと！') }}
                 </a>
                 
@@ -84,5 +84,6 @@
             @yield('content')
         </main>
     </div>
+    <script src=" {{ mix('js/app.js') }} "></script>
 </body>
 </html>

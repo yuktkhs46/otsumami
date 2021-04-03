@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\RecipeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\RecipeController::class, 'index']);
 //レシピ一覧画面を表示
-Route::get('/home', 'App\Http\Controllers\RecipeController@index');
+Route::get('/', 'App\Http\Controllers\RecipeController@index');
 
 route::resource('recipe', App\Http\Controllers\RecipeController::class);
 
@@ -27,7 +27,7 @@ route::resource('recipe', App\Http\Controllers\RecipeController::class);
 
 // レシピ編集画面を表示
 // Route::get('recipe/edit/{id}', 'App\Http\Controllers\RecipeController@edit');
-Route::post('recipe/edit/', 'App\Http\Controllers\RecipeController@update');
+// Route::post('recipe/edit/', 'App\Http\Controllers\RecipeController@update');
 
 // レシピを削除
 // Route::get('recipe/delete/{id}', 'App\Http\Controllers\RecipeController@delete');
