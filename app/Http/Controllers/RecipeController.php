@@ -140,7 +140,7 @@ class RecipeController extends Controller
 
     // レシピ削除
     public function destroy($id){
-        
+        dd($id);
         $recipe = Recipe::find($request->id);
         $recipe->delete();
         return redirect('/');

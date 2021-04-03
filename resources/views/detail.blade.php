@@ -28,7 +28,14 @@
                 <div class=" pull-left">
                   @can ("update", $post)
                   <button type="button" class="btn-flat-border btn-sm "><a href="{{ route('recipe.edit', $post->id )  }}">編集</a></button>
-                  <button type="button" method="delete"  class="btn-flat-border btn-sm "><a href="{{ route('recipe.destroy', $post->id )}}">削除</a></button>
+                  <button type="button" class="btn-flat-border btn-sm ">
+                  <form action="{{ route('recipe.destroy', $post->id)}}" method="POST">
+                   @csrf
+                   @method('DELETE')
+                   <input type="submit" name="" value="削除">
+                  </form>
+                  </button>
+                  
                   @endcan
                 </div>
                   
